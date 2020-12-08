@@ -1,24 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+//import "styled-components/macro";
+import "./App.css";
+
+import { Item } from "./Item";
+
+const fruits = [
+  "Apple",
+  "Banana",
+  "Cherry",
+  "Grape",
+  "Kiwi",
+  "Lemon",
+  "Pear",
+  "Pineapple"
+];
+
+
 
 function App() {
+  const [isVisible, setVisible] = useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div
+      style={{
+        width: '350px',
+        margin: 'auto',
+        overflow: 'hidden',
+        color: '#1c1c1c',
+        background: '#aaccde'
+      }}
+    >
+      {console.log(isVisible)}
+      
+        {fruits.map((fruit, index) => {
+          return (
+            <Item
+              isVisible={isVisible}
+              index={index}
+              name={fruit}
+            />
+          )
+        })}
     </div>
+    <div style={{textAlign: 'center'}}>
+      <button style={{width: '350px', padding: '10px', marginTop: '15px'}} onClick={() => setVisible(!isVisible)}>
+          TOGGLE
+        </button>
+        </div>
+        </>
   );
 }
 
